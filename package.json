@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "web": "npx -y live-server webroot",
+    "build:watch": "npx -y nodemon -e js,ts,c,h,png,html --watch src --watch webroot --exec 'npm run build'",
+    "config": "cmake -B build -DCMAKE_TOOLCHAIN_FILE=\"${WASI_SDK_PATH}/share/cmake/wasi-sdk.cmake\" -DCMAKE_BUILD_TYPE=Release",
+    "build": "cmake --build build",
+    "start": "npm run config && npx -y npm-run-all -p web build:watch"
+  }
+}
