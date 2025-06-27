@@ -1,4 +1,4 @@
-This is a basic example cart in C for the [null0](https://notnull.games/null0) game-engine.
+This is a basic example cart in Nelua for the [null0](https://notnull.games/null0) game-engine.
 
 ## usage
 
@@ -11,7 +11,7 @@ They can also install [the native runtime](https://github.com/notnullgames/null0
 There are 2 actions:
 
 - Publish demo to github-pages - this happens on any push
-- Attach current version of your cart to any releases that are created (like [here](https://github.com/notnullgames/cart_c/releases/))
+- Attach current version of your cart to any releases that are created (like [here](https://github.com/notnullgames/cart_nelua/releases/))
 
 ## developing
 
@@ -20,9 +20,9 @@ Make sure you have [wasi-sdk](https://github.com/WebAssembly/wasi-sdk/releases) 
 Then you can do this:
 
 ```sh
-$WASI_SDK_PATH/bin/clang src/main.c -o src/main.wasm
+nelua --cflags="-I ." -L . "src/main.nelua" -r --cc "$WASI_SDK_PATH/bin/clang" -o src/main.wasm
 cd src
-zip -r ../webroot/mygame.null0 . -x '*.h' '*.c'
+zip -r ../webroot/mygame.null0 . -x '*.nelua' '.DS_Store'
 ```
 
 You can also use cmake (recommended) to build a complete cart:
@@ -40,5 +40,5 @@ If you have node installed, you can also get a nice watching-webseerver, locally
 npm start
 ```
 
-After this, create a github-release, and your cart will show up on releases (like [here](https://github.com/notnullgames/cart_c/releases/)).
+After this, create a github-release, and your cart will show up on releases (like [here](https://github.com/notnullgames/cart_nelua/releases/)).
 
