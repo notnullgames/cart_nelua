@@ -16,6 +16,13 @@ jobs:
         uses: konsumer/install-wasi-sdk@v1
         with:
           version: "25"
+      - name: Install Nelua
+        run:
+          |
+          git clone https://github.com/edubart/nelua-lang.git
+          cd nelua-lang
+          make
+          sudo make install
       - name: Configure CMake
         run: cmake -B build -DCMAKE_TOOLCHAIN_FILE=$WASI_SDK_PATH/share/cmake/wasi-sdk.cmake -DCMAKE_BUILD_TYPE=Release
       - name: Build CMake
